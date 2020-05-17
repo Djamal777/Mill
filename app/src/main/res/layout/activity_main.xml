@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Вариант A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pidarasVedushiy" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Вариант C"
+        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Вариант B"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:text="Вариант D"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <ImageView
+        android:id="@+id/pidarasVedushiy"
+        android:layout_width="231dp"
+        android:layout_height="108dp"
+        android:layout_marginBottom="364dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/sukadibrov" />
+
+    <ImageView
+        android:id="@+id/fonSukiVoprosa"
+        android:layout_width="271dp"
+        android:layout_height="124dp"
+        app:layout_constraintBottom_toTopOf="@+id/pidarasVedushiy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/summaVoprosa"
+        app:srcCompat="@drawable/sukavopros" />
+
+    <TextView
+        android:id="@+id/tekstVoprosa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Текст Вопроса"
+        app:layout_constraintBottom_toBottomOf="@+id/fonSukiVoprosa"
+        app:layout_constraintEnd_toEndOf="@+id/fonSukiVoprosa"
+        app:layout_constraintStart_toStartOf="@+id/fonSukiVoprosa"
+        app:layout_constraintTop_toTopOf="@+id/fonSukiVoprosa" />
+
+    <TextView
+        android:id="@+id/summaVoprosa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сумма Вопроса"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.07" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="88dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
+        app:srcCompat="@drawable/knopka1" />
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="88dp"
+        android:layout_height="91dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/knopka2" />
+
+    <ImageButton
+        android:id="@+id/imageButton8"
+        android:layout_width="89dp"
+        android:layout_height="94dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton7"
+        app:srcCompat="@drawable/knopka3" />
+
+    <ImageButton
+        android:id="@+id/imageButton11"
+        android:layout_width="125dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/fonSukiVoprosa"
+        app:layout_constraintEnd_toStartOf="@+id/summaVoprosa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sukavihod" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
