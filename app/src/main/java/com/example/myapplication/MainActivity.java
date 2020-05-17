@@ -2,11 +2,14 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -25,8 +28,11 @@ public class MainActivity extends AppCompatActivity {
     Button var_a, var_b, var_c, var_d;
     ImageButton back, call, help, half;
     TextView vopros, summa;
-    QuestionData[] questionData;
+
+    ProgressBar progressBar;
     public static final String LOG_TAG = "Main_Activity";
+
+    private QuestionResponse questions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,52 +52,57 @@ public class MainActivity extends AppCompatActivity {
         vopros = (TextView) findViewById(R.id.tekstVoprosa);
         summa = (TextView) findViewById(R.id.summaVoprosa);
 
-        questionData=new QuestionData[5];
+        progressBar = findViewById(R.id.progressBar2);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://engine.lifeis.porn")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        Database database = retrofit.create(Database.class);
-        Call<QuestionDataList> call = (Call<QuestionDataList>) database.data(1, 5);
+        QuestionRequest qr = new QuestionRequest();
 
-        call.enqueue(new Callback<QuestionDataList>() {
+        qr.count = 2;
+        qr.qType = 3;
 
-            @Override
-            public void onResponse(Call<QuestionDataList> call, Response<QuestionDataList> response) {
-                if (response.isSuccessful()) {
-                    QuestionDataList lists = response.body();
-                    for(int i=0;i<5;i++){
-                        questionData[i] = lists.data.get(i);
-                        i++;
-                    }
-                    Log.d(LOG_TAG, "response " + response.body().data.size());
-                } else {
-                    Log.d(LOG_TAG, "response code " + response.code());
+        progressBar.setVisibility(ProgressBar.VISIBLE);
+        new RequestAsync().execute(qr);
+    }
+
+    private void OnResponse() {
+        progressBar.setVisibility(ProgressBar.INVISIBLE);
+        vopros.setText(questions.data.get(0).question);
+        var_a.setText(questions.data.get(0).answers.get(0));
+        var_b.setText(questions.data.get(0).answers.get(1));
+        var_c.setText(questions.data.get(0).answers.get(2));
+        var_d.setText(questions.data.get(0).answers.get(3));
+    }
+
+    private void OnFailure() {
+        progressBar.setVisibility(ProgressBar.INVISIBLE);
+        Toast.makeText(this, "Ошибка соединения", Toast.LENGTH_LONG).show();
+    }
+
+    class RequestAsync extends AsyncTask<QuestionRequest, Void, Void> {
+
+        @Override
+        protected Void doInBackground(QuestionRequest... params) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(JsonPlaceHolderAPI.HOST)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            JsonPlaceHolderAPI JsonPlaceHolderAPI = retrofit.create(JsonPlaceHolderAPI.class);
+            Call<QuestionResponse> call =
+                    JsonPlaceHolderAPI.getQuestions(params[0].qType, params[0].count);
+
+            call.enqueue(new Callback<QuestionResponse>() {
+                @Override
+                public void onResponse(Call<QuestionResponse> call, Response<QuestionResponse> response) {
+                    MainActivity.this.questions = response.body();
+                    MainActivity.this.OnResponse();
                 }
-            }
 
-            @Override
-            public void onFailure(Call<QuestionDataList> call, Throwable t) {
-                Log.e(LOG_TAG, "failure" + t);
-            }
-        });
-        try {
-            sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+                @Override
+                public void onFailure(Call<QuestionResponse> call, Throwable t) {
+                    MainActivity.this.OnFailure();
+                }
+            });
+
+            return null;
         }
-        //while(vopr<=15){
-        if(questionData[0]!=null) {
-            vopros.setText(questionData[0].question);
-        }
-        else{
-            vopros.setText("null");
-        }
-        /*var_a.setText(questionData[0].answers[0]);
-        var_b.setText(questionData[0].answers[1]);
-        var_c.setText(questionData[0].answers[2]);
-        var_d.setText(questionData[0].answers[3]);*/
-        //break;
     }
 }
