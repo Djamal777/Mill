@@ -9,9 +9,9 @@
     <ImageButton
         android:id="@+id/button"
         android:layout_width="435dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="40dp"
-        android:scaleType="fitCenter"
+        android:layout_height="80dp"
+        android:layout_marginTop="76dp"
+        android:scaleType="fitXY"
         android:src="@drawable/KNOPKA_BLUE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,8 +20,8 @@
     <ImageButton
         android:id="@+id/button3"
         android:layout_width="435dp"
-        android:layout_height="100dp"
-        android:scaleType="fitCenter"
+        android:layout_height="80dp"
+        android:scaleType="fitXY"
         android:src="@drawable/KNOPKA_BLUE"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,25 +31,23 @@
     <ImageButton
         android:id="@+id/button2"
         android:layout_width="435dp"
-        android:layout_height="100dp"
-        android:scaleType="fitCenter"
+        android:layout_height="80dp"
+        android:scaleType="fitXY"
         android:src="@drawable/KNOPKA_BLUE"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <ImageButton
         android:id="@+id/button4"
         android:layout_width="435dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="44dp"
-        android:scaleType="fitCenter"
+        android:scaleType="fitXY"
         android:src="@drawable/KNOPKA_BLUE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
@@ -57,7 +55,7 @@
         android:id="@+id/pidarasVedushiy"
         android:layout_width="231dp"
         android:layout_height="108dp"
-        android:layout_marginBottom="364dp"
+        android:layout_marginBottom="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,18 +63,19 @@
 
     <ImageView
         android:id="@+id/fonSukiVoprosa"
-        android:layout_width="271dp"
+        android:layout_width="274dp"
         android:layout_height="124dp"
         app:layout_constraintBottom_toTopOf="@+id/pidarasVedushiy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/summaVoprosa"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/sukavopros" />
 
     <TextView
         android:id="@+id/tekstVoprosa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="216dp"
+        android:layout_height="81dp"
         android:text="Текст Вопроса"
         app:layout_constraintBottom_toBottomOf="@+id/fonSukiVoprosa"
         app:layout_constraintEnd_toEndOf="@+id/fonSukiVoprosa"
@@ -96,8 +95,8 @@
 
     <ImageButton
         android:id="@+id/imageButton6"
-        android:layout_width="89dp"
-        android:layout_height="88dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:layout_marginStart="1dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/imageButton7"
@@ -107,21 +106,20 @@
 
     <ImageButton
         android:id="@+id/imageButton7"
-        android:layout_width="88dp"
-        android:layout_height="91dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.431"
+        app:layout_constraintVertical_bias="0.28"
         app:srcCompat="@drawable/KNOPKA_POMOSH" />
 
     <ImageButton
         android:id="@+id/imageButton8"
-        android:layout_width="89dp"
-        android:layout_height="94dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:scaleType="fitStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
@@ -133,10 +131,13 @@
         android:layout_width="125dp"
         android:layout_height="61dp"
         android:layout_marginBottom="25dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/fonSukiVoprosa"
         app:layout_constraintEnd_toStartOf="@+id/summaVoprosa"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.076"
         app:srcCompat="@drawable/sukavihod" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -154,5 +155,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="194dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/button4"
+        app:layout_constraintEnd_toEndOf="@+id/button4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
