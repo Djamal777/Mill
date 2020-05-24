@@ -9,42 +9,44 @@
     <ImageButton
         android:id="@+id/button"
         android:layout_width="435dp"
-        android:layout_height="106dp"
-        android:layout_marginTop="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
         android:scaleType="fitCenter"
         android:src="@drawable/KNOPKA_BLUE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pidarasVedushiy" />
 
-    <Button
+    <ImageButton
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Вариант C"
+        android:layout_width="435dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/KNOPKA_BLUE"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
-    <Button
+    <ImageButton
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Вариант B"
+        android:layout_width="435dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/KNOPKA_BLUE"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
-    <Button
+    <ImageButton
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="435dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="44dp"
-        android:text="Вариант D"
+        android:scaleType="fitCenter"
+        android:src="@drawable/KNOPKA_BLUE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -94,32 +96,37 @@
 
     <ImageButton
         android:id="@+id/imageButton6"
-        android:layout_width="88dp"
-        android:layout_height="85dp"
+        android:layout_width="89dp"
+        android:layout_height="88dp"
         android:layout_marginStart="1dp"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/imageButton7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
-        app:srcCompat="@drawable/knopka1" />
+        app:srcCompat="@drawable/KNOPKA_50" />
 
     <ImageButton
         android:id="@+id/imageButton7"
         android:layout_width="88dp"
         android:layout_height="91dp"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/knopka2" />
+        app:layout_constraintVertical_bias="0.431"
+        app:srcCompat="@drawable/KNOPKA_POMOSH" />
 
     <ImageButton
         android:id="@+id/imageButton8"
         android:layout_width="89dp"
         android:layout_height="94dp"
+        android:scaleType="fitStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
         app:layout_constraintTop_toBottomOf="@+id/imageButton7"
-        app:srcCompat="@drawable/" />
+        app:srcCompat="@drawable/KNOPKA_50" />
 
     <ImageButton
         android:id="@+id/imageButton11"
