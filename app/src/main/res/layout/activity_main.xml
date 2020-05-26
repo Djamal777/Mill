@@ -80,8 +80,8 @@
 
     <ImageView
         android:id="@+id/fonSukiVoprosa"
-        android:layout_width="264dp"
-        android:layout_height="124dp"
+        android:layout_width="724px"
+        android:layout_height="328px"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/pidarasVedushiy"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,8 +124,8 @@
 
     <ImageButton
         android:id="@+id/imageButton7"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="150px"
+        android:layout_height="150px"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -138,9 +138,9 @@
 
     <ImageButton
         android:id="@+id/imageButton8"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="2dp"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_marginTop="8dp"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,8 +151,8 @@
 
     <ImageButton
         android:id="@+id/imageButton11"
-        android:layout_width="125dp"
-        android:layout_height="61dp"
+        android:layout_width="110dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="25dp"
         android:background="@null"
         android:scaleType="fitCenter"
@@ -166,9 +166,9 @@
 
     <ImageButton
         android:id="@+id/imageButton6"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="2dp"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_marginBottom="8dp"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/imageButton7"
