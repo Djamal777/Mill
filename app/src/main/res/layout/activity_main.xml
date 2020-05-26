@@ -80,8 +80,8 @@
 
     <ImageView
         android:id="@+id/fonSukiVoprosa"
-        android:layout_width="724px"
-        android:layout_height="328px"
+        android:layout_width="234dp"
+        android:layout_height="120dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/pidarasVedushiy"
         app:layout_constraintEnd_toEndOf="parent"
