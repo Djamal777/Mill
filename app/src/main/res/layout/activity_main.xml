@@ -6,71 +6,113 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/fon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fon_zadniy" />
+
+    <ImageView
+        android:id="@+id/pidarasVedushiy"
+        android:alpha="0.5"
+        android:layout_width="231dp"
+        android:layout_height="108dp"
+        android:layout_marginBottom="392dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/mill" />
+
     <ImageButton
         android:id="@+id/button"
         android:layout_width="435dp"
         android:layout_height="80dp"
-        android:layout_marginTop="76dp"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/knopka_blue"
+        android:layout_marginTop="24dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pidarasVedushiy" />
+        app:layout_constraintTop_toBottomOf="@+id/pidarasVedushiy"
+        app:srcCompat="@drawable/knopka_blue" />
 
     <ImageButton
         android:id="@+id/button3"
         android:layout_width="435dp"
         android:layout_height="80dp"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/knopka_blue"
+        android:background="@null"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:srcCompat="@drawable/knopka_blue" />
 
     <ImageButton
         android:id="@+id/button2"
         android:layout_width="435dp"
         android:layout_height="80dp"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/knopka_blue"
+        android:background="@null"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:srcCompat="@drawable/knopka_blue" />
 
     <ImageButton
         android:id="@+id/button4"
         android:layout_width="435dp"
         android:layout_height="80dp"
         android:layout_marginBottom="44dp"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/knopka_blue"
+        android:background="@null"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <ImageView
-        android:id="@+id/pidarasVedushiy"
-        android:layout_width="231dp"
-        android:layout_height="108dp"
-        android:layout_marginBottom="400dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/sukadibrov" />
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:srcCompat="@drawable/knopka_blue" />
 
     <ImageView
         android:id="@+id/fonSukiVoprosa"
         android:layout_width="274dp"
         android:layout_height="124dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/pidarasVedushiy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/summaVoprosa"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/sukavopros" />
+
+    <ImageView
+        android:id="@+id/fonSummi"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="11dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/fonSukiVoprosa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/knopka_osnova" />
+
+    <TextView
+        android:id="@+id/summaVoprosa"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:text="Сумма Вопроса"
+        app:layout_constraintBottom_toBottomOf="@+id/fonSummi"
+        app:layout_constraintEnd_toEndOf="@+id/fonSummi"
+        app:layout_constraintStart_toStartOf="@+id/fonSummi"
+        app:layout_constraintTop_toTopOf="@+id/fonSummi"
+        app:layout_constraintVertical_bias="0.4700000" />
 
     <TextView
         android:id="@+id/tekstVoprosa"
@@ -82,35 +124,15 @@
         app:layout_constraintStart_toStartOf="@+id/fonSukiVoprosa"
         app:layout_constraintTop_toTopOf="@+id/fonSukiVoprosa" />
 
-    <TextView
-        android:id="@+id/summaVoprosa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Сумма Вопроса"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07" />
-
-    <ImageButton
-        android:id="@+id/imageButton6"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:layout_marginStart="1dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
-        app:srcCompat="@drawable/knopka_50" />
-
     <ImageButton
         android:id="@+id/imageButton7"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.74"
         app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.28"
@@ -118,10 +140,13 @@
 
     <ImageButton
         android:id="@+id/imageButton8"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:scaleType="fitStart"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="2dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.74"
         app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
         app:layout_constraintTop_toBottomOf="@+id/imageButton7"
         app:srcCompat="@drawable/knopka_zvonok" />
@@ -131,7 +156,8 @@
         android:layout_width="125dp"
         android:layout_height="61dp"
         android:layout_marginBottom="25dp"
-        android:scaleType="fitXY"
+        android:background="@null"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/fonSukiVoprosa"
         app:layout_constraintEnd_toStartOf="@+id/summaVoprosa"
         app:layout_constraintHorizontal_bias="0.0"
@@ -139,6 +165,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.076"
         app:srcCompat="@drawable/sukavihod" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="2dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.74"
+        app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
+        app:srcCompat="@drawable/knopka_50" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
