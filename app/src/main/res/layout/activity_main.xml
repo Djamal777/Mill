@@ -124,8 +124,8 @@
 
     <ImageButton
         android:id="@+id/imageButton7"
-        android:layout_width="150px"
-        android:layout_height="150px"
+        android:layout_width="124px"
+        android:layout_height="124px"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -138,7 +138,7 @@
 
     <ImageButton
         android:id="@+id/imageButton8"
-        android:layout_width="150px"
+        android:layout_width="124px"
         android:layout_height="150px"
         android:layout_marginTop="8dp"
         android:background="@null"
@@ -166,8 +166,8 @@
 
     <ImageButton
         android:id="@+id/imageButton6"
-        android:layout_width="150px"
-        android:layout_height="150px"
+        android:layout_width="124px"
+        android:layout_height="124px"
         android:layout_marginBottom="8dp"
         android:background="@null"
         android:scaleType="fitCenter"
