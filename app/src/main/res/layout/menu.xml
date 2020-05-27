@@ -59,21 +59,21 @@
         tools:layout_editor_absoluteX="173dp"
         tools:layout_editor_absoluteY="419dp" />
 
-    <Switch
+    <ImageButton
         android:id="@+id/switch1"
-        android:layout_width="417dp"
-        android:layout_height="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:layout_marginEnd="24dp"
-        android:checked="true"
-        android:text=""
-        android:thumb="@drawable/zvuk"
+        android:background=" @null"
+        android:button="@drawable/zvuk"
+        android:src="@drawable/zvuk"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.674"
         app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05"
-        tools:visibility="visible" />
+        app:layout_constraintVertical_bias="0.05" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
