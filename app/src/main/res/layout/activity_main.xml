@@ -105,7 +105,6 @@
         android:id="@+id/summaVoprosa"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
-        android:text="Сумма Вопроса"
         app:layout_constraintBottom_toBottomOf="@+id/fonSummi"
         app:layout_constraintEnd_toEndOf="@+id/fonSummi"
         app:layout_constraintStart_toStartOf="@+id/fonSummi"
@@ -116,7 +115,6 @@
         android:id="@+id/tekstVoprosa"
         android:layout_width="216dp"
         android:layout_height="81dp"
-        android:text="Текст Вопроса"
         app:layout_constraintBottom_toBottomOf="@+id/fonSukiVoprosa"
         app:layout_constraintEnd_toEndOf="@+id/fonSukiVoprosa"
         app:layout_constraintStart_toStartOf="@+id/fonSukiVoprosa"
@@ -187,7 +185,6 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="@+id/button3"
         app:layout_constraintStart_toStartOf="@+id/button3"
@@ -197,7 +194,6 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="@+id/button4"
         app:layout_constraintStart_toStartOf="@+id/button4"
@@ -207,7 +203,6 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="@+id/button2"
         app:layout_constraintStart_toStartOf="@+id/button2"
@@ -217,10 +212,19 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/button"
         app:layout_constraintEnd_toEndOf="@+id/button"
         app:layout_constraintStart_toStartOf="@+id/button"
         app:layout_constraintTop_toTopOf="@+id/button" />
+
+    <TextView
+        android:id="@+id/otvett"
+        android:layout_width="124dp"
+        android:layout_height="61dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/pidarasVedushiy"
+        app:layout_constraintEnd_toEndOf="@+id/pidarasVedushiy"
+        app:layout_constraintStart_toStartOf="@+id/pidarasVedushiy"
+        app:layout_constraintTop_toTopOf="@+id/pidarasVedushiy" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

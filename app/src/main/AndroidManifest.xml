@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/sukadibrov"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.Light.NoTitleBar">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <!--Убирает полоску. Изначально было android:theme="@style/AppTheme" -->
         <activity android:name=".Loading"
             android:screenOrientation="portrait"
