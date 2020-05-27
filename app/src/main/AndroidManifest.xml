@@ -8,7 +8,7 @@
     <application
 
         android:allowBackup="true"
-        android:icon="@drawable/sukadibrov"
+        android:icon="@drawable/mill"
         android:label="@string/app_name"
         android:roundIcon="@drawable/sukadibrov"
         android:supportsRtl="true"
