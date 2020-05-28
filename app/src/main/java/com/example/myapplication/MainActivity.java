@@ -9,8 +9,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
     int id_a, id_b, id_c, id_d;
     int sound;
     char ch;
+    boolean shto=false;
     ImageButton back, call, help, half, var_a, var_b, var_c, var_d;
+    ImageView vedush;
     TextView vopros, summa, zvonok, a, b, c, d;
     SoundPool soundpool_main;
     MediaPlayer mp;
@@ -64,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         vopros = (TextView) findViewById(R.id.tekstVoprosa);
         summa = (TextView) findViewById(R.id.summaVoprosa);
         zvonok = (TextView) findViewById(R.id.otvett);
+        vedush=(ImageView)findViewById(R.id.Vedushiy);
 
         a = (TextView) findViewById(R.id.textView1);
         b = (TextView) findViewById(R.id.textView2);
@@ -107,8 +112,10 @@ public class MainActivity extends AppCompatActivity {
         half.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mp.pause();
-                soundpool_main.play(h50_50, 1, 1, 0, 0, 1);
+                if(sound%2==0) {
+                    mp.pause();
+                    soundpool_main.play(h50_50, 1, 1, 0, 0, 1);
+                }
                 half.setImageResource(R.drawable.knopka_50_nazh);
                 half.setClickable(false);
                 half.setEnabled(false);
@@ -138,7 +145,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                     }
                     otv.remove(r);
-                    mp.start();
+                    if(sound%2==0) {
+                        mp.start();
+                    }
                 }
             }
         });
@@ -148,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
                 call.setEnabled(false);
                 call.setClickable(false);
                 call.setImageResource(R.drawable.knopka_zvonok_nazh);
+                vedush.setImageResource(R.drawable.vopros);
+                shto=true;
                 int r = 0 + (int) (Math.random() * 4);
                 zvonok.setText(otveti[r] + ch);
             }
@@ -158,6 +169,8 @@ public class MainActivity extends AppCompatActivity {
                 help.setEnabled(false);
                 help.setClickable(false);
                 help.setImageResource(R.drawable.knopka_pomosh_nazh);
+                vedush.setImageResource(R.drawable.vopros);
+                shto=true;
                 int[] mas = new int[4];
                 mas[0] = 50 + (int) (Math.random() * 25);
                 mas[1] = 0 + (int) (Math.random() * (100 - mas[0]));
@@ -203,144 +216,152 @@ public class MainActivity extends AppCompatActivity {
                 call.setEnabled(false);
                 help.setEnabled(false);
                 int id = v.getId();
-                new Thread(() -> {
-                    if (id == id_a) var_a.setImageResource(R.drawable.knopka_yellow);
-                    else if (id == id_b) var_b.setImageResource(R.drawable.knopka_yellow);
-                    else if (id == id_c) var_c.setImageResource(R.drawable.knopka_yellow);
-                    else if (id == id_d) var_d.setImageResource(R.drawable.knopka_yellow);
-                    if (sound % 2 == 0) {
-                        mp.pause();
-                        soundpool_main.play(otvet, 1, 1, 0, 0, 1);
-                    }
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    if (sound % 2 == 0) {
-                        soundpool_main.stop(otvet);
-                    }
-                    if (id == idd) {
-                        if (id == id_a) var_a.setImageResource(R.drawable.knopka_green);
-                        else if (id == id_b) var_b.setImageResource(R.drawable.knopka_green);
-                        else if (id == id_c) var_c.setImageResource(R.drawable.knopka_green);
-                        else if (id == id_d) var_d.setImageResource(R.drawable.knopka_green);
-                        if (vopr < 15) {
-                            if (sound % 2 == 0) {
-                                soundpool_main.play(pravilno, 1, 1, 0, 0, 1);
-                            }
-                            try {
-                                Thread.sleep(3000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            if (vopr == 4) {
-                                QuestionRequest qr = new QuestionRequest();
-                                qr.count = 5;
-                                qr.qType = 2;
-                                new RequestAsync().execute(qr);
-                            } else if (vopr == 9) {
-                                QuestionRequest qr = new QuestionRequest();
-                                qr.count = 5;
-                                qr.qType = 3;
-                                new RequestAsync().execute(qr);
-                            }
-                            if (sound % 2 == 0) {
-                                mp.start();
-                            }
-                            if (id == id_a) var_a.setImageResource(R.drawable.knopka_blue);
-                            else if (id == id_b) var_b.setImageResource(R.drawable.knopka_blue);
-                            else if (id == id_c) var_c.setImageResource(R.drawable.knopka_blue);
-                            else if (id == id_d) var_d.setImageResource(R.drawable.knopka_blue);
-                        } else if (vopr == 15) {
-                            zvonok.setText("ВЫ ВЫИГРАЛИ 3 МИЛЛИОНА РУБЛЕЙ!");
-                            if (sound % 2 == 0) {
-                                soundpool_main.play(pobeda, 1, 1, 0, 0, 1);
-                            }
-                            try {
-                                Thread.sleep(3000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            finish();
-                        }
-                    } else {
-                        if (id == id_a) var_a.setImageResource(R.drawable.knopka_red);
-                        else if (id == id_b) var_b.setImageResource(R.drawable.knopka_red);
-                        else if (id == id_c) var_c.setImageResource(R.drawable.knopka_red);
-                        else if (id == id_d) var_d.setImageResource(R.drawable.knopka_red);
-                        if (idd == id_a) var_a.setImageResource(R.drawable.knopka_green);
-                        else if (idd == id_b) var_b.setImageResource(R.drawable.knopka_green);
-                        else if (idd == id_c) var_c.setImageResource(R.drawable.knopka_green);
-                        else if (idd == id_d) var_d.setImageResource(R.drawable.knopka_green);
-                        if (sound % 2 == 0) {
-                            soundpool_main.play(nepravilno, 1, 1, 0, 0, 1);
-                        }
-                        try {
-                            Thread.sleep(3000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        finish();
-                    }
-                }).start();
-                if (id == idd && vopr < 14 && vopr != 4 && vopr != 9) {
-                    new CountDownTimer(5000, 1000) {
-                        public void onTick(long millisUntilFinished) {
-                        }
-
-                        public void onFinish() {
-                            summa.setText(vopr + 1 + ". " + money[vopr]);
-                            vopros.setText(questions.data.get(vopr % 5).question);
-                            Vector vec = new Vector();
-                            vec.add(0);
-                            vec.add(1);
-                            vec.add(2);
-                            vec.add(3);
-                            int rand = 0 + (int) (Math.random() * vec.size());
-                            a.setText("A. " + questions.data.get(vopr % 5).answers.get((int) vec.get(rand)));
-                            if ((int) vec.get(rand) == 0) {
-                                idd = var_a.getId();
-                                prav = a.toString();
-                                ch = 'A';
-                            }
-                            vec.remove(rand);
-                            rand = 0 + (int) (Math.random() * vec.size());
-                            b.setText("B. " + questions.data.get(vopr % 5).answers.get((int) vec.get(rand)));
-                            if ((int) vec.get(rand) == 0) {
-                                idd = var_b.getId();
-                                prav = b.toString();
-                                ch = 'B';
-                            }
-                            vec.remove(rand);
-                            rand = 0 + (int) (Math.random() * vec.size());
-                            c.setText("C. " + questions.data.get(vopr % 5).answers.get((int) vec.get(rand)));
-                            if ((int) vec.get(rand) == 0) {
-                                idd = var_c.getId();
-                                prav = c.toString();
-                                ch = 'C';
-                            }
-                            vec.remove(rand);
-                            rand = 0 + (int) (Math.random() * vec.size());
-                            d.setText("D. " + questions.data.get(vopr % 5).answers.get((int) vec.get(rand)));
-                            if ((int) vec.get(rand) == 0) {
-                                idd = var_d.getId();
-                                prav = d.toString();
-                                ch = 'D';
-                            }
-                            vec.remove(rand);
-                            vopr++;
-                            var_a.setEnabled(true);
-                            var_b.setEnabled(true);
-                            var_c.setEnabled(true);
-                            var_d.setEnabled(true);
-                            half.setEnabled(true);
-                            call.setEnabled(true);
-                            help.setEnabled(true);
-                            if(zvonok.toString()!="") zvonok.setText("");
-                        }
-                    }.start();
+                if (id == id_a) var_a.setImageResource(R.drawable.knopka_yellow);
+                else if (id == id_b) var_b.setImageResource(R.drawable.knopka_yellow);
+                else if (id == id_c) var_c.setImageResource(R.drawable.knopka_yellow);
+                else if (id == id_d) var_d.setImageResource(R.drawable.knopka_yellow);
+                if (sound % 2 == 0) {
+                    mp.pause();
+                    soundpool_main.play(otvet, 1, 1, 0, 0, 1);
                 }
+                new CountDownTimer(2000, 1000) {
+                    public void onTick(long millisUntilFinished) {
+                    }
+
+                    public void onFinish() {
+                        if (sound % 2 == 0) {
+                            soundpool_main.stop(otvet);
+                        }
+                        if (id == idd) {
+                            if (id == id_a) var_a.setImageResource(R.drawable.knopka_green);
+                            else if (id == id_b) var_b.setImageResource(R.drawable.knopka_green);
+                            else if (id == id_c) var_c.setImageResource(R.drawable.knopka_green);
+                            else if (id == id_d) var_d.setImageResource(R.drawable.knopka_green);
+                            if (vopr < 15) {
+                                if (sound % 2 == 0) {
+                                    soundpool_main.play(pravilno, 1, 1, 0, 0, 1);
+                                }
+                                new CountDownTimer(2000, 1000) {
+                                    public void onTick(long millisUntilFinished) {
+                                    }
+
+                                    public void onFinish() {
+                                        if (vopr == 4) {
+                                            QuestionRequest qr = new QuestionRequest();
+                                            qr.count = 5;
+                                            qr.qType = 2;
+                                            new RequestAsync().execute(qr);
+                                        } else if (vopr == 9) {
+                                            QuestionRequest qr = new QuestionRequest();
+                                            qr.count = 5;
+                                            qr.qType = 3;
+                                            new RequestAsync().execute(qr);
+                                        } else {
+                                            summa.setText(vopr + 1 + ". " + money[vopr]);
+                                            vopros.setText(questions.data.get(vopr % 5).question);
+                                            Vector vec = new Vector();
+                                            vec.add(0);
+                                            vec.add(1);
+                                            vec.add(2);
+                                            vec.add(3);
+                                            int rand = 0 + (int) (Math.random() * vec.size());
+                                            a.setText("A. " + questions.data.get(vopr % 5).answers.get((int) vec.get(rand)));
+                                            if ((int) vec.get(rand) == 0) {
+                                                idd = var_a.getId();
+                                                prav = a.toString();
+                                                ch = 'A';
+                                            }
+                                            vec.remove(rand);
+                                            rand = 0 + (int) (Math.random() * vec.size());
+                                            b.setText("B. " + questions.data.get(vopr % 5).answers.get((int) vec.get(rand)));
+                                            if ((int) vec.get(rand) == 0) {
+                                                idd = var_b.getId();
+                                                prav = b.toString();
+                                                ch = 'B';
+                                            }
+                                            vec.remove(rand);
+                                            rand = 0 + (int) (Math.random() * vec.size());
+                                            c.setText("C. " + questions.data.get(vopr % 5).answers.get((int) vec.get(rand)));
+                                            if ((int) vec.get(rand) == 0) {
+                                                idd = var_c.getId();
+                                                prav = c.toString();
+                                                ch = 'C';
+                                            }
+                                            vec.remove(rand);
+                                            rand = 0 + (int) (Math.random() * vec.size());
+                                            d.setText("D. " + questions.data.get(vopr % 5).answers.get((int) vec.get(rand)));
+                                            if ((int) vec.get(rand) == 0) {
+                                                idd = var_d.getId();
+                                                prav = d.toString();
+                                                ch = 'D';
+                                            }
+                                            vec.remove(rand);
+                                            vopr++;
+                                            var_a.setEnabled(true);
+                                            var_b.setEnabled(true);
+                                            var_c.setEnabled(true);
+                                            var_d.setEnabled(true);
+                                            half.setEnabled(true);
+                                            call.setEnabled(true);
+                                            help.setEnabled(true);
+                                            if (zvonok.toString() != "") zvonok.setText("");
+                                        }
+                                        if (sound % 2 == 0) {
+                                            mp.start();
+                                        }
+                                        if (id == id_a)
+                                            var_a.setImageResource(R.drawable.knopka_blue);
+                                        else if (id == id_b)
+                                            var_b.setImageResource(R.drawable.knopka_blue);
+                                        else if (id == id_c)
+                                            var_c.setImageResource(R.drawable.knopka_blue);
+                                        else if (id == id_d)
+                                            var_d.setImageResource(R.drawable.knopka_blue);
+                                        if(shto){
+                                            shto=false;
+                                            vedush.setImageResource(R.drawable.mill);
+                                        }
+                                    }
+                                }.start();
+                            }
+                            else if (vopr == 15) {
+                                zvonok.setText("ВЫ ВЫИГРАЛИ 3 МИЛЛИОНА РУБЛЕЙ!");
+                                if (sound % 2 == 0) {
+                                    soundpool_main.play(pobeda, 1, 1, 0, 0, 1);
+                                }
+                                new CountDownTimer(2000, 1000) {
+                                    public void onTick(long millisUntilFinished) {
+                                    }
+
+                                    public void onFinish() {
+                                        finish();
+                                    }
+                                }.start();
+                            }
+                        }
+                        else {
+                            if (id == id_a) var_a.setImageResource(R.drawable.knopka_red);
+                            else if (id == id_b) var_b.setImageResource(R.drawable.knopka_red);
+                            else if (id == id_c) var_c.setImageResource(R.drawable.knopka_red);
+                            else if (id == id_d) var_d.setImageResource(R.drawable.knopka_red);
+                            if (idd == id_a) var_a.setImageResource(R.drawable.knopka_green);
+                            else if (idd == id_b) var_b.setImageResource(R.drawable.knopka_green);
+                            else if (idd == id_c) var_c.setImageResource(R.drawable.knopka_green);
+                            else if (idd == id_d) var_d.setImageResource(R.drawable.knopka_green);
+                            if (sound % 2 == 0) {
+                                soundpool_main.play(nepravilno, 1, 1, 0, 0, 1);
+                            }
+                            new CountDownTimer(2000, 1000) {
+                                public void onTick(long millisUntilFinished) {
+                                }
+
+                                public void onFinish() {
+                                    finish();
+                                }
+                            }.start();
+                        }
+                    }
+                }.start();
             }
         };
         var_a.setOnClickListener(listener);
@@ -352,8 +373,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if (mp.isPlaying()) {
-            mp.pause();
+        if (sound%2==0) {
+            mp.stop();
+            soundpool_main.stop(otvet);
+            soundpool_main.stop(pravilno);
+            soundpool_main.stop(nepravilno);
+            soundpool_main.stop(h50_50);
         }
     }
 
@@ -446,7 +471,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        mp.stop();
+        if(sound%2==0) {
+            mp.stop();
+            soundpool_main.stop(otvet);
+            soundpool_main.stop(pravilno);
+            soundpool_main.stop(nepravilno);
+            soundpool_main.stop(h50_50);
+        }
         finish();
     }
 }

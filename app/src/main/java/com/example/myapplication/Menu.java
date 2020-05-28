@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -23,18 +24,18 @@ public class Menu extends AppCompatActivity {
         game.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Thread(()->{
-                    game.setImageResource(R.drawable.knopka_blue_nazhata);
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                game.setImageResource(R.drawable.knopka_blue_nazhata);
+                new CountDownTimer(300, 1000) {
+                    public void onTick(long millisUntilFinished) {
                     }
-                    game.setImageResource(R.drawable.knopka_blue);
-                }).start();
-                Intent i = new Intent(Menu.this, MainActivity.class);
-                i.putExtra("a", soundd);
-                startActivity(i);
+
+                    public void onFinish() {
+                        game.setImageResource(R.drawable.knopka_blue);
+                        Intent i = new Intent(Menu.this, MainActivity.class);
+                        i.putExtra("a", soundd);
+                        startActivity(i);
+                    }
+                }.start();
             }
         });
         sound.setOnClickListener(new View.OnClickListener() {

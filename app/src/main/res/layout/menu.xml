@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/fon_zadniy" />
 
     <ImageView
-        android:id="@+id/pidarasVedushiy"
+        android:id="@+id/Vedushiy"
         android:layout_width="248dp"
         android:layout_height="248dp"
         android:layout_marginBottom="364dp"
@@ -72,7 +72,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.674"
-        app:layout_constraintStart_toEndOf="@+id/pidarasVedushiy"
+        app:layout_constraintStart_toEndOf="@+id/Vedushiy"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05" />
 
