@@ -13,7 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Menu extends AppCompatActivity {
 
     ImageButton game, sound;
-    int soundd = 0;
+    boolean soundd = true;
+    int k;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +42,15 @@ public class Menu extends AppCompatActivity {
         sound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                soundd++;
-                if (soundd % 2 == 0) {
+                k++;
+                if (k % 2 == 0) {
+                    soundd=true;
                     sound.setImageResource(R.drawable.zvuk);
                 } else {
+                    soundd=false;
                     sound.setImageResource(R.drawable.zvuk_vikl);
                 }
             }
         });
     }
 }
-

@@ -18,20 +18,17 @@ public class Loading extends AppCompatActivity {
             public void run() {
                 try {
                     int logoTimer = 0;
-                    while(logoTimer < 5000)
-                    {
+                    while(logoTimer < 5000) {
                         sleep(100);
                         logoTimer = logoTimer +100;
                     };
                     Intent i=new Intent(Loading.this,Menu.class);
                     startActivity(i);
                 }
-                catch (InterruptedException e)
-                {
+                catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                finally
-                {
+                finally{
                     finish();
                 }
             }

@@ -9,14 +9,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
 import java.util.Vector;
 
@@ -35,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
     static int idd;
     int[] money;
     int id_a, id_b, id_c, id_d;
-    int sound;
+    boolean sound;
     char ch;
-    boolean shto=false;
+    boolean shto=false, stop=false;
     ImageButton back, call, help, half, var_a, var_b, var_c, var_d;
     ImageView vedush;
     TextView vopros, summa, zvonok, a, b, c, d;
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sound = getIntent().getIntExtra("a", 0);
+        sound = getIntent().getBooleanExtra("a", false);
 
         var_a = (ImageButton) findViewById(R.id.button);
         var_b = (ImageButton) findViewById(R.id.button2);
@@ -90,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         otvet = soundpool_main.load(this, R.raw.otvet, 1);
         pobeda = soundpool_main.load(this, R.raw.pobeda, 1);
         pravilno = soundpool_main.load(this, R.raw.pravilno, 1);
-        if (sound % 2 == 0) {
+        if (sound) {
             mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 public void onPrepared(MediaPlayer mp) {
                     mp.start();
@@ -105,14 +103,14 @@ public class MainActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mp.isPlaying()) mp.stop();
+                if (sound) mp.stop();
                 finish();
             }
         });
         half.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(sound%2==0) {
+                if(sound) {
                     mp.pause();
                     soundpool_main.play(h50_50, 1, 1, 0, 0, 1);
                 }
@@ -145,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                     }
                     otv.remove(r);
-                    if(sound%2==0) {
+                    if(sound) {
                         mp.start();
                     }
                 }
@@ -220,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
                 else if (id == id_b) var_b.setImageResource(R.drawable.knopka_yellow);
                 else if (id == id_c) var_c.setImageResource(R.drawable.knopka_yellow);
                 else if (id == id_d) var_d.setImageResource(R.drawable.knopka_yellow);
-                if (sound % 2 == 0) {
+                if (sound) {
                     mp.pause();
                     soundpool_main.play(otvet, 1, 1, 0, 0, 1);
                 }
@@ -229,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     public void onFinish() {
-                        if (sound % 2 == 0) {
+                        if (sound) {
                             soundpool_main.stop(otvet);
                         }
                         if (id == idd) {
@@ -238,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
                             else if (id == id_c) var_c.setImageResource(R.drawable.knopka_green);
                             else if (id == id_d) var_d.setImageResource(R.drawable.knopka_green);
                             if (vopr < 15) {
-                                if (sound % 2 == 0) {
+                                if (sound & !stop) {
                                     soundpool_main.play(pravilno, 1, 1, 0, 0, 1);
                                 }
                                 new CountDownTimer(2000, 1000) {
@@ -297,16 +295,9 @@ public class MainActivity extends AppCompatActivity {
                                             }
                                             vec.remove(rand);
                                             vopr++;
-                                            var_a.setEnabled(true);
-                                            var_b.setEnabled(true);
-                                            var_c.setEnabled(true);
-                                            var_d.setEnabled(true);
-                                            half.setEnabled(true);
-                                            call.setEnabled(true);
-                                            help.setEnabled(true);
                                             if (zvonok.toString() != "") zvonok.setText("");
                                         }
-                                        if (sound % 2 == 0) {
+                                        if (sound & !stop) {
                                             mp.start();
                                         }
                                         if (id == id_a)
@@ -321,12 +312,19 @@ public class MainActivity extends AppCompatActivity {
                                             shto=false;
                                             vedush.setImageResource(R.drawable.mill);
                                         }
+                                        var_a.setEnabled(true);
+                                        var_b.setEnabled(true);
+                                        var_c.setEnabled(true);
+                                        var_d.setEnabled(true);
+                                        half.setEnabled(true);
+                                        call.setEnabled(true);
+                                        help.setEnabled(true);
                                     }
                                 }.start();
                             }
                             else if (vopr == 15) {
                                 zvonok.setText("ВЫ ВЫИГРАЛИ 3 МИЛЛИОНА РУБЛЕЙ!");
-                                if (sound % 2 == 0) {
+                                if (sound) {
                                     soundpool_main.play(pobeda, 1, 1, 0, 0, 1);
                                 }
                                 new CountDownTimer(2000, 1000) {
@@ -334,6 +332,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
 
                                     public void onFinish() {
+                                        mp.stop();
                                         finish();
                                     }
                                 }.start();
@@ -348,7 +347,7 @@ public class MainActivity extends AppCompatActivity {
                             else if (idd == id_b) var_b.setImageResource(R.drawable.knopka_green);
                             else if (idd == id_c) var_c.setImageResource(R.drawable.knopka_green);
                             else if (idd == id_d) var_d.setImageResource(R.drawable.knopka_green);
-                            if (sound % 2 == 0) {
+                            if (sound & !stop) {
                                 soundpool_main.play(nepravilno, 1, 1, 0, 0, 1);
                             }
                             new CountDownTimer(2000, 1000) {
@@ -356,6 +355,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
 
                                 public void onFinish() {
+                                    mp.stop();
                                     finish();
                                 }
                             }.start();
@@ -373,20 +373,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if (sound%2==0) {
-            mp.stop();
-            soundpool_main.stop(otvet);
+        if (sound) {
+            mp.pause();
+            /*soundpool_main.stop(otvet);
             soundpool_main.stop(pravilno);
             soundpool_main.stop(nepravilno);
-            soundpool_main.stop(h50_50);
+
+            soundpool_main.stop(h50_50);*/
+            soundpool_main.autoPause();
+            stop=true;
         }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (sound % 2 == 0) {
+        if (sound) {
             mp.start();
+            stop=false;
         }
     }
 
@@ -471,7 +475,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(sound%2==0) {
+        if(sound) {
             mp.stop();
             soundpool_main.stop(otvet);
             soundpool_main.stop(pravilno);
