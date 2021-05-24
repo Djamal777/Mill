@@ -14,14 +14,17 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/fon_zadniy" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="274dp"
-        android:layout_height="249dp"
+        android:layout_width="285dp"
+        android:layout_height="285dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="100dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fon"
         app:layout_constraintVertical_bias="0.125"
-        app:srcCompat="@drawable/vopros" />
+        app:srcCompat="@drawable/congrats" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -40,14 +43,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName">
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
         <Button
             android:id="@+id/button9"
             android:layout_width="141dp"
             android:layout_height="80dp"
-            android:background="@android:drawable/picture_frame"
-            android:foreground="@android:drawable/ic_delete"
+            android:background="@drawable/krest"
             app:layout_constraintEnd_toStartOf="@+id/button10"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,8 +59,7 @@
             android:id="@+id/button10"
             android:layout_width="141dp"
             android:layout_height="80dp"
-            android:background="@android:drawable/picture_frame"
-            android:foreground="@android:drawable/ic_input_add"
+            android:background="@drawable/galka"
             app:layout_constraintBottom_toBottomOf="@+id/button9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -67,27 +68,41 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="253dp"
-        android:layout_height="493dp"
+        android:layout_width="241dp"
+        android:layout_height="247dp"
+        android:fontFamily="serif"
         android:text="TextView"
+        android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/vopros"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="285dp"
+        android:layout_height="90dp"
+        android:background="@drawable/vvod_imya"
         app:layout_constraintBottom_toBottomOf="@+id/fon"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.116" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="253dp"
+        android:layout_height="63dp"
+        android:ems="10"
+        android:fontFamily="serif"
+        android:hint="Введите имя"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
