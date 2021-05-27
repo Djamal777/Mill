@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "837203583574",
+    "project_id": "millioner-b3005",
+    "storage_bucket": "millioner-b3005.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837203583574:android:40ba47d86ec9c26c3151f7",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837203583574-2nfl34fp9m51nv0v7sbpl6e0eor2oms9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplication",
+            "certificate_hash": "b12efb0cd2e8940427bdbdbd128e736f4f29ea8c"
+          }
+        },
+        {
+          "client_id": "837203583574-9gmj3e0dtc7ik94mdhjevr64j1mn7pls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVDgLQn1jhKTvxbLZC8U3ig2zK-fUVCJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837203583574-9gmj3e0dtc7ik94mdhjevr64j1mn7pls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

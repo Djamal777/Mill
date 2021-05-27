@@ -1,11 +1,14 @@
 package com.example.myapplication;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -16,6 +19,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Vector;
 
 import retrofit2.Call;
@@ -24,6 +40,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.content.ContentValues.TAG;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -42,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
     SoundPool soundpool_main;
     MediaPlayer mp;
     String prav;
+    FirebaseFirestore db;
+    public List<Man> menn;
     String[] otveti = {"Мне кажется, правильный ответ ", "Я уверен, что ", "Хмм.. Я скажу ", "Точно не знаю, но по-моему "};
 
     public static final String LOG_TAG = "Main_Activity";
@@ -53,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        db=FirebaseFirestore.getInstance();
         sound = getIntent().getBooleanExtra("a", false);
-
         var_a = (ImageButton) findViewById(R.id.button);
         var_b = (ImageButton) findViewById(R.id.button2);
         var_c = (ImageButton) findViewById(R.id.button3);
@@ -192,6 +211,39 @@ public class MainActivity extends AppCompatActivity {
                 zvonok.setText(s);
             }
         });
+        menn=new ArrayList<>();
+        for(int i=0;i<5;i++){
+            Man man=new Man();
+            menn.add(man);
+        }
+        Comparator<Man> comparator=new ManCompare();
+        db.collection("top").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                          @RequiresApi(api = Build.VERSION_CODES.N)
+                                          @Override
+                                          public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                              if (!queryDocumentSnapshots.isEmpty()) {
+                                                  List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                                                  Log.d(TAG, "list size " + list.size());
+                                                  int i = 0;
+                                                  for (DocumentSnapshot d : list) {
+                                                      Man m = d.toObject(Man.class);
+                                                      menn.get(i).setId(d.getId());
+                                                      menn.get(i).setName(m.getName());
+                                                      menn.get(i).setMoney(m.getMoney());
+                                                      i++;
+                                                  }
+                                                  for (int k = 0; k < 4; k++) {
+                                                      for (int j = 1; j < 5; j++) {
+                                                          if (menn.get(k).getMoney() < menn.get(j).getMoney()) {
+                                                              Collections.swap(menn, k, j);
+                                                          }
+                                                      }
+                                                  }
+                                                  menn.sort(comparator);
+                                              }
+                                          }
+                                      });
         QuestionRequest qr = new QuestionRequest();
         qr.qType = 1;
         qr.count = 5;
@@ -333,7 +385,9 @@ public class MainActivity extends AppCompatActivity {
 
                                     public void onFinish() {
                                         mp.stop();
-                                        finish();
+                                        Intent i=new Intent(MainActivity.this, Congratulations.class);
+                                        i.putExtra("деньга",money[vopr]);
+                                        startActivityForResult(i,1);
                                     }
                                 }.start();
                             }
@@ -356,7 +410,14 @@ public class MainActivity extends AppCompatActivity {
 
                                 public void onFinish() {
                                     mp.stop();
-                                    finish();
+                                    if(money[vopr-1]>menn.get(4).getMoney() && vopr>=2){
+                                        Intent i=new Intent(MainActivity.this, Congratulations.class);
+                                        i.putExtra("деньга",money[vopr-2]);
+                                        startActivityForResult(i,1);
+                                    }
+                                    else {
+                                        finish();
+                                    }
                                 }
                             }.start();
                         }
@@ -483,5 +544,12 @@ public class MainActivity extends AppCompatActivity {
             soundpool_main.stop(h50_50);
         }
         finish();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1 && resultCode == 1) {
+            this.finish();
+        }
     }
 }
