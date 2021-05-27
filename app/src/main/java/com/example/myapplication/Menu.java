@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Menu extends AppCompatActivity {
 
-    ImageButton game, sound;
+    ImageButton game, sound, records;
     boolean soundd = true;
     int k;
 
@@ -22,6 +22,8 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.menu);
         game = (ImageButton) findViewById(R.id.button5);
         sound = (ImageButton) findViewById(R.id.switch1);
+        records=(ImageButton) findViewById(R.id.records);
+
         game.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,6 +36,23 @@ public class Menu extends AppCompatActivity {
                         game.setImageResource(R.drawable.knopka_blue);
                         Intent i = new Intent(Menu.this, MainActivity.class);
                         i.putExtra("a", soundd);
+                        startActivity(i);
+                    }
+                }.start();
+                onStop();
+            }
+        });
+        records.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                records.setImageResource(R.drawable.knopka_blue_nazhata);
+                new CountDownTimer(300, 1000) {
+                    public void onTick(long millisUntilFinished) {
+                    }
+
+                    public void onFinish() {
+                        records.setImageResource(R.drawable.knopka_blue);
+                        Intent i = new Intent(Menu.this, Records.class);
                         startActivity(i);
                     }
                 }.start();

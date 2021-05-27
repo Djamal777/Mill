@@ -46,33 +46,33 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/otmena"
             android:layout_width="141dp"
             android:layout_height="80dp"
             android:background="@drawable/krest"
-            app:layout_constraintEnd_toStartOf="@+id/button10"
+            app:layout_constraintEnd_toStartOf="@+id/gotovo"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/button10" />
+            app:layout_constraintTop_toTopOf="@+id/gotovo" />
 
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/gotovo"
             android:layout_width="141dp"
             android:layout_height="80dp"
             android:background="@drawable/galka"
-            app:layout_constraintBottom_toBottomOf="@+id/button9"
+            app:layout_constraintBottom_toBottomOf="@+id/otmena"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button9" />
+            app:layout_constraintStart_toEndOf="@+id/otmena" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/congr"
         android:layout_width="241dp"
         android:layout_height="247dp"
         android:fontFamily="serif"
-        android:text="TextView"
         android:textColor="@android:color/background_light"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"

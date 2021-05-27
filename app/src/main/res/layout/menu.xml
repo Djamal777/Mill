@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/fon_zadniy" />
 
     <ImageButton
-        android:id="@+id/button6"
+        android:id="@+id/records"
         android:layout_width="1080px"
         android:layout_height="70dp"
         android:layout_marginBottom="64dp"
@@ -42,10 +42,10 @@
         android:text="Рекорды"
         android:textColor="#ffffff"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/button6"
-        app:layout_constraintEnd_toEndOf="@+id/button6"
-        app:layout_constraintStart_toStartOf="@+id/button6"
-        app:layout_constraintTop_toTopOf="@+id/button6" />
+        app:layout_constraintBottom_toBottomOf="@+id/records"
+        app:layout_constraintEnd_toEndOf="@+id/records"
+        app:layout_constraintStart_toStartOf="@+id/records"
+        app:layout_constraintTop_toTopOf="@+id/records" />
 
     <ImageView
         android:id="@+id/Vedushiy"
